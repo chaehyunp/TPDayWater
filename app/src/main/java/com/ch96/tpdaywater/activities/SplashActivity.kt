@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.ch96.tpdaywater.GV
 import com.ch96.tpdaywater.R
 
 class SplashActivity : AppCompatActivity() {
@@ -12,8 +13,19 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, IntroNameActivity::class.java))
-            finish()
+            var pref = getSharedPreferences("User", MODE_PRIVATE)
+            var name = pref.getString("name", "")
+            var total = pref.getInt("total", 0)
+
+            if (name != ""){
+                GV.name = name!!
+                GV.totalWater = total
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, IntroNameActivity::class.java))
+                finish()
+            }
         }, 2000)
     }
 }

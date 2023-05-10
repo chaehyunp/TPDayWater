@@ -311,7 +311,8 @@
     <color name="blue_grey_900">#263238</color>
 
 
-    <color name="main">#FF8EDAFE</color>
+    <color name="main">#73D1FD</color>
+    <color name="sub">#03A9F4</color>
     <color name="black">#FF252525</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
