@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         binding.tvGoal.text = "목표치 ${GV.goal}L 중에서"
         binding.tvTotal.text = "${GV.totalWater}ml"
 
+        saveProgress()
+
         binding.btnAdd.setOnClickListener { addWater() }
         binding.btnCancel.setOnClickListener { cancelWater() }
     }
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding.tvTotal.text = "${GV.totalWater}ml"
 
         saveChangedTotal()
+        saveProgress()
     }
 
     fun cancelWater(){
@@ -45,6 +48,14 @@ class MainActivity : AppCompatActivity() {
             binding.tvTotal.text = "${GV.totalWater}ml"
         }
         saveChangedTotal()
+        saveProgress()
+    }
+
+    fun saveProgress(){
+        if(GV.totalWater != 0){
+            var percent = 90
+            binding.progressBar.setProgress(percent)
+        } else binding.progressBar.setProgress(0)
     }
 
     fun saveChangedTotal(){

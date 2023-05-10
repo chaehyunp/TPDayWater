@@ -42,14 +42,17 @@
         android:layout_centerHorizontal="true"/>
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:background="@drawable/bg_progress_bar"
-        android:progressDrawable="@drawable/bg_circle_progress"
+        android:progressTint="@color/main"
+        android:background="@drawable/bg_progress_back"
+        android:progressDrawable="@drawable/bg_progress_bar"
         android:indeterminateOnly="false"
+        android:indeterminate="false"
         android:max="100"
-        android:progress="0"
+        android:progress="30"
         android:layout_centerInParent="true"/>
 
     <TextView
