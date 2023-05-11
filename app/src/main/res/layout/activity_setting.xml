@@ -138,7 +138,8 @@
             android:id="@+id/switch_alert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:checked="true"/>
 
     </RelativeLayout>
 
@@ -197,6 +198,66 @@
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
             android:textColor="@color/grey_500"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_alert_time_de"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/layout_alert_allow"
+        android:paddingHorizontal="30dp"
+        android:layout_marginTop="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 시간"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_400"/>
+
+        <TextView
+            android:id="@+id/tv_time_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="07:00 - 21:00"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_400"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_alert_term_de"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/layout_alert_time"
+        android:paddingHorizontal="30dp"
+        android:layout_marginTop="24dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 주기"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_400"/>
+
+        <TextView
+            android:id="@+id/tv_alert_term_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1시간"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_400"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>

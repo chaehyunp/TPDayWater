@@ -20,7 +20,7 @@ class IntroGoalActivity : AppCompatActivity() {
 
         binding.btnOkay.setOnClickListener { clickBtnOkay() }
         binding.numberPicker.setOnValueChangedListener { numberPicker, i, i2 ->
-            GV.goal = goal[i2]
+            GV.goalArrayNum = i2
         }
 
         binding.numberPicker.wrapSelectorWheel = false

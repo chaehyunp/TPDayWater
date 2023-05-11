@@ -55,6 +55,7 @@
         android:progress="30"
         android:layout_centerInParent="true"/>
 
+
     <TextView
         android:id="@+id/tv_goal"
         android:layout_width="wrap_content"
