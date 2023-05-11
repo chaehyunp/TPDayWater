@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvName.text = "${GV.name}님,"
 
-        binding.tvGoal.text = "목표치 ${GV.goal}L 중에서"
+        binding.tvGoal.text = "목표치 ${GV.goalArray[GV.goalArrayNum]}L 중에서"
         binding.tvTotal.text = "${GV.totalWater}ml"
 
         saveProgress()
@@ -53,9 +53,11 @@ class MainActivity : AppCompatActivity() {
 
     fun saveProgress(){
         if(GV.totalWater != 0){
-            var percent = 90
-            binding.progressBar.setProgress(percent)
-        } else binding.progressBar.setProgress(0)
+            var proceed = GV.totalWater/(GV.goalArray[GV.goalArrayNum]*1000)
+            var percent = (proceed*100).toInt()
+            binding.progressbar.setProgress(percent)
+
+        } else binding.progressbar.setProgress(0)
     }
 
     fun saveChangedTotal(){
@@ -71,7 +73,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.menu_setting -> {
-                startActivity(Intent(this, SettingActivity::class.java))
+                var intent = Intent(this, SettingActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

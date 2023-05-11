@@ -16,10 +16,13 @@ class SplashActivity : AppCompatActivity() {
             var pref = getSharedPreferences("User", MODE_PRIVATE)
             var name = pref.getString("name", "")
             var total = pref.getInt("total", 0)
+            var alert = pref.getString("alert", "allow")
 
             if (name != ""){
                 GV.name = name!!
                 GV.totalWater = total
+                GV.alert = alert!!
+
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
