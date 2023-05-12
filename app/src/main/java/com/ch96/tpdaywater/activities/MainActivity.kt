@@ -3,11 +3,13 @@ package com.ch96.tpdaywater.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.ch96.tpdaywater.GV
 import com.ch96.tpdaywater.R
 import com.ch96.tpdaywater.databinding.ActivityMainBinding
+import kotlin.math.round
 
 class MainActivity : AppCompatActivity() {
 
