@@ -5,6 +5,7 @@
     <!--  동적 퍼미션 다이얼로그  -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <!--  진동 퍼미션  -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
@@ -43,7 +44,7 @@
             android:exported="false"/>
 
         <!-- Alarm Receiver -->
-        <receiver android:name=".AlarmReceiver"
+        <receiver android:name=".NotiReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

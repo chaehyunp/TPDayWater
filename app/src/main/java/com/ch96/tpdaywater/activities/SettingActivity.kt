@@ -1,24 +1,21 @@
 package com.ch96.tpdaywater.activities
 
 import android.app.AlarmManager
-import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.NumberPicker
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import com.ch96.tpdaywater.AlarmReceiver
 import com.ch96.tpdaywater.GV
+import com.ch96.tpdaywater.NotiReceiver
 import com.ch96.tpdaywater.R
 import com.ch96.tpdaywater.databinding.ActivitySettingBinding
-import java.util.Calendar
 
 internal var alarmManager:AlarmManager ?= null
 
@@ -27,8 +24,6 @@ class SettingActivity : AppCompatActivity() {
     val binding by lazy { ActivitySettingBinding.inflate(layoutInflater) }
     val alarmManager by lazy { getSystemService(Context.ALARM_SERVICE) as AlarmManager }
 
-    var alert = "allow"
-    
     var minHour = 7
     var maxHour = 21
     var alertTerm = 1
@@ -42,16 +37,8 @@ class SettingActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.icon_arrow_back)
 
-        //알림설정
-//        val intent = Intent(this, AlarmReceiver::class.java)
-//        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+ 1000 * 60 * 60, 1000 * 60 * 60, pendingIntent)
-//
-//        var time = System.currentTimeMillis()+ 1000 * 60 * 60
-//        Log.i("whatis","$time")
 
         binding.tvName.text = GV.name
-
         binding.tvName.setOnClickListener { changeName() }
 
         binding.tvCup.text = "${GV.cup}ml"
@@ -60,14 +47,27 @@ class SettingActivity : AppCompatActivity() {
         binding.tvCup.setOnClickListener { changeCup() }
         binding.tvGoal.setOnClickListener { changeGoal() }
 
-        getAlert()
-        binding.switchAlert.isChecked = alert == "allow"
+
+        if (GV.alert == "allow") {
+            binding.switchAlert.isChecked = true
+            alertAllow()
+        }
+        else if (GV.alert == "deny") {
+            binding.switchAlert.isChecked = false
+            alertDeny()
+        }
 
         binding.switchAlert.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked){
                 alertAllow()
+                setAlert()
+                Toast.makeText(this, "알림이 설정되었습니다!", Toast.LENGTH_SHORT).show()
             } else {
                 alertDeny()
+                val cancelIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+                alarmManager.cancel(cancelIntent)
+                finish()
+                Toast.makeText(this, "알림이 해제되었습니다!", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -86,7 +86,20 @@ class SettingActivity : AppCompatActivity() {
         binding.tvMin.setOnClickListener { changetime() }
         binding.tvMax.setOnClickListener { changetime() }
         binding.tvAlertTerm.setOnClickListener { changeTerm() }
+
+
+
     }
+
+    fun setAlert(){
+        val intent = Intent(this, NotiReceiver::class.java)
+        intent.putExtra("min", minHour)
+        intent.putExtra("max", maxHour)
+        intent.putExtra("term", alertTerm)
+
+        sendBroadcast(intent)
+    }
+
 
     fun changeName(){
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_name, null)
@@ -100,6 +113,8 @@ class SettingActivity : AppCompatActivity() {
             var name = binding.tvName.text.toString()
             GV.name = name
             binding.tvName.text = GV.name
+            var editor = getSharedPreferences("User", MODE_PRIVATE).edit()
+            editor.putString("name", name).commit()
 
             changeNameDialog.dismiss()
         }
@@ -230,12 +245,7 @@ class SettingActivity : AppCompatActivity() {
         }
     }
 
-//    fun isNotificationTime(): Boolean {
-//        val calendar = Calendar.getInstance()
-//        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-//        // 오전 7시부터 오후 9시까지 알림을 보내기 위한 조건문
-//        return hour >= minHour && hour < maxHour
-//    }
+
 
     fun alertAllow(){
         binding.layoutAlertTimeDe.visibility = View.INVISIBLE
@@ -245,12 +255,6 @@ class SettingActivity : AppCompatActivity() {
 
         GV.alert = "allow"
         saveAlert()
-
-
-//        val receiverIntent = Intent(application, AlarmReceiver::class.java)
-//        val pendingIntent = PendingIntent.getBroadcast(application, 0, receiverIntent, PendingIntent.FLAG_IMMUTABLE)
-//        alarmManager?.cancel(pendingIntent)
-
     }
 
     fun alertDeny(){
@@ -261,10 +265,6 @@ class SettingActivity : AppCompatActivity() {
 
         GV.alert = "deny"
         saveAlert()
-
-//        val receiverIntent = Intent(application, AlarmReceiver::class.java)
-//        val pendingIntent = PendingIntent.getBroadcast(application, 0, receiverIntent, PendingIntent.FLAG_IMMUTABLE)
-//        alarmManager?.cancel(pendingIntent)
     }
 
     fun saveAlert(){
@@ -287,10 +287,6 @@ class SettingActivity : AppCompatActivity() {
         editor.putInt("term", alertTerm).commit()
     }
 
-    fun getAlert(){
-        var pref = getSharedPreferences("User", MODE_PRIVATE)
-        alert = pref.getString("alert", "allow")!!
-    }
 
     fun getMinHour(){
         var pref = getSharedPreferences("User", MODE_PRIVATE)
@@ -306,7 +302,6 @@ class SettingActivity : AppCompatActivity() {
         var pref = getSharedPreferences("User", MODE_PRIVATE)
         alertTerm = pref.getInt("term", 1)
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

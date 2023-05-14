@@ -150,7 +150,8 @@
         android:orientation="horizontal"
         android:layout_below="@+id/layout_alert_allow"
         android:paddingHorizontal="30dp"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="12dp"
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
@@ -189,7 +190,8 @@
         android:orientation="horizontal"
         android:layout_below="@+id/layout_alert_time"
         android:paddingHorizontal="30dp"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="24dp"
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
@@ -218,7 +220,8 @@
         android:orientation="horizontal"
         android:layout_below="@+id/layout_alert_allow"
         android:paddingHorizontal="30dp"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="12dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -226,7 +229,7 @@
             android:text="알림 시간"
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
-            android:textColor="@color/grey_300"/>
+            android:textColor="@color/grey_400"/>
 
         <TextView
             android:id="@+id/tv_min_de"
@@ -235,7 +238,7 @@
             android:text="7시부터 "
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
-            android:textColor="@color/grey_300"
+            android:textColor="@color/grey_400"
             android:layout_toLeftOf="@id/tv_max_de"/>
 
         <TextView
@@ -245,7 +248,7 @@
             android:text="21시까지"
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
-            android:textColor="@color/grey_300"
+            android:textColor="@color/grey_400"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
@@ -257,7 +260,8 @@
         android:orientation="horizontal"
         android:layout_below="@+id/layout_alert_time"
         android:paddingHorizontal="30dp"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="24dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -265,7 +269,7 @@
             android:text="알림 주기"
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
-            android:textColor="@color/grey_300"/>
+            android:textColor="@color/grey_400"/>
 
         <TextView
             android:id="@+id/tv_alert_term_de"
@@ -274,7 +278,7 @@
             android:text="1시간"
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
-            android:textColor="@color/grey_300"
+            android:textColor="@color/grey_400"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
