@@ -161,10 +161,20 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/tv_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="07:00 - 21:00"
+            android:text="7시부터 "
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_500"
+            android:layout_toLeftOf="@id/tv_max"/>
+
+        <TextView
+            android:id="@+id/tv_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21시까지"
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
             android:textColor="@color/grey_500"
@@ -197,6 +207,74 @@
             android:fontFamily="@font/pretendard_regular"
             android:textSize="16sp"
             android:textColor="@color/grey_500"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_alert_time_de"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/layout_alert_allow"
+        android:paddingHorizontal="30dp"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 시간"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_300"/>
+
+        <TextView
+            android:id="@+id/tv_min_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7시부터 "
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_300"
+            android:layout_toLeftOf="@id/tv_max_de"/>
+
+        <TextView
+            android:id="@+id/tv_max_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21시까지"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_300"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_alert_term_de"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/layout_alert_time"
+        android:paddingHorizontal="30dp"
+        android:layout_marginTop="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 주기"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_300"/>
+
+        <TextView
+            android:id="@+id/tv_alert_term_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1시간"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16sp"
+            android:textColor="@color/grey_300"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>

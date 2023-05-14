@@ -289,7 +289,7 @@ class SettingActivity : AppCompatActivity() {
 
     fun getAlert(){
         var pref = getSharedPreferences("User", MODE_PRIVATE)
-        var alert = pref.getString("alert", "allow")
+        alert = pref.getString("alert", "allow")!!
     }
 
     fun getMinHour(){
