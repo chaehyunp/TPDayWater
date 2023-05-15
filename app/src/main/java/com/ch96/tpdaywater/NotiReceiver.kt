@@ -26,21 +26,25 @@ class NotiReceiver :BroadcastReceiver() {
         var term = p1.getIntExtra("term", 0)
 
         val goalWater = GV.goalArray[GV.goalArrayNum]
-        val havetoWater = ((GV.goalArray[GV.goalArrayNum]*1000) - GV.totalWater) as Int
+        val havetoWater = ((GV.goalArray[GV.goalArrayNum]*1000) - GV.totalWater).toInt()
 
-//        val current = min + (Math.random() * (max - min + 1)).toInt()
+
+        val openAppPendingIntent = PendingIntent.getActivity(p0, 1, p1, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
         val builder = NotificationCompat.Builder(p0, CHANNEL_ID)
             .setSmallIcon(R.drawable.btn_main) //아이콘
-            .setContentTitle("띵동! 물 보충할 시간입니다💦") //제목
+            .setContentTitle("물 보충할 시간입니다💦") //제목
             .setContentText("목표치 ${goalWater}L까지 ${havetoWater}ml 남았어요!")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setAutoCancel(true)
+            .setContentIntent(openAppPendingIntent) //알림을 눌렀을때 앱실행
+            .setAutoCancel(true) //알림 클릭 - 제거
 
         notificationManager.notify(NOTIFICATION_ID, builder.build())
 
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = System.currentTimeMillis()
-        calendar.add(Calendar.SECOND, term)
+
+        val calendar = Calendar.getInstance() //캘린더 인스턴스 생성
+        calendar.timeInMillis = System.currentTimeMillis() //현재 시스템 시간으로 설정
+        calendar.add(Calendar.HOUR, term)
 
         val notiIntent = Intent(p0, NotiReceiver::class.java)
         notiIntent.putExtra("min", min)
@@ -52,6 +56,7 @@ class NotiReceiver :BroadcastReceiver() {
             p0, 0, notiIntent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmManager = p0.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+
 
     }
 

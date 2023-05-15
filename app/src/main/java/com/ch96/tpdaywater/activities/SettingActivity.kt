@@ -61,13 +61,11 @@ class SettingActivity : AppCompatActivity() {
             if (isChecked){
                 alertAllow()
                 setAlert()
-                Toast.makeText(this, "알림이 설정되었습니다!", Toast.LENGTH_SHORT).show()
+
             } else {
                 alertDeny()
                 val cancelIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
                 alarmManager.cancel(cancelIntent)
-                finish()
-                Toast.makeText(this, "알림이 해제되었습니다!", Toast.LENGTH_SHORT).show()
             }
         }
 
