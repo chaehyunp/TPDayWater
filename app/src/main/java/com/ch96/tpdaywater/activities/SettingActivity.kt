@@ -1,5 +1,6 @@
 package com.ch96.tpdaywater.activities
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.NumberPicker
 import android.widget.TextView
 import android.widget.Toast
@@ -99,6 +101,7 @@ class SettingActivity : AppCompatActivity() {
     }
 
 
+
     fun changeName(){
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_name, null)
         val builder = AlertDialog.Builder(this).setView(dialogView)
@@ -108,7 +111,7 @@ class SettingActivity : AppCompatActivity() {
 
         btnOkay.setOnClickListener {
 
-            var name = binding.tvName.text.toString()
+            var name = dialogView.findViewById<EditText>(R.id.et_name).text.toString()
             GV.name = name
             binding.tvName.text = GV.name
             var editor = getSharedPreferences("User", MODE_PRIVATE).edit()

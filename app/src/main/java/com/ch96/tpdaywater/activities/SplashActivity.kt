@@ -7,10 +7,14 @@ import android.os.Handler
 import android.os.Looper
 import com.ch96.tpdaywater.GV
 import com.ch96.tpdaywater.R
+import com.ch96.tpdaywater.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
+
+    val binding by lazy { ActivitySplashBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
             var pref = getSharedPreferences("User", MODE_PRIVATE)

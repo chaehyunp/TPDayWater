@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         binding.btnCancel.setOnClickListener { cancelWater() }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        binding.tvName.text = "${GV.name}님,"
+    }
+
     fun addWater(){
         GV.totalWater += GV.cup
         binding.tvTotal.text = "${GV.totalWater}ml"
