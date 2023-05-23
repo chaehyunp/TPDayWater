@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">TPDayWater</string>
+    <string name="app_name">데이워터</string>
+    <string name="intro_name">반갑습니다🙌\n우리 함께 꼬박꼬박 물을 마셔봐요!\n제가 뭐라고 부르면 될까요?</string>
+    <string name="intro_goal">💧하루동안 마실 물의\n목표치를 정해주세요!</string>
+    <string name="intro_alert">물 마실 시간이 되면\n알림을 보내드릴까요?🔔</string>
+    <string name="alert_yes">네, 보내주세요</string>
+    <string name="alert_no">아니요, 안받을래요</string>
+    <string name="script">조금만 더 마시면\n목표를 채울 수 있어요👍</string>
 </resources>

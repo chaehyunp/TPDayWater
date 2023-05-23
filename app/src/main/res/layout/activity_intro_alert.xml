@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.IntroNameActivity"
+    android:padding="32dp">
+
+    <TextView
+        android:id="@+id/tv_script"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_alert"
+        android:fontFamily="@font/pretendard_regular"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:lineHeight="25.6dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"/>
+
+    <TextView
+        android:id="@+id/btn_yes"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_main"
+        android:text="@string/alert_yes"
+        android:fontFamily="@font/pretendard_regular"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:layout_below="@+id/tv_script"/>
+
+    <TextView
+        android:id="@+id/btn_no"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:background="@drawable/btn_sub"
+        android:text="@string/alert_no"
+        android:fontFamily="@font/pretendard_regular"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/btn_yes"/>
+
+
+</RelativeLayout>
